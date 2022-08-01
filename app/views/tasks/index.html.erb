@@ -1,0 +1,15 @@
+<div class="container">
+  <h1 class="display-1">
+    All task will go here
+  </h1>
+
+  <% if @tasks.any? %>
+    <ul class="list-group">
+      <% @tasks.each do |task| %>
+        <div class="list-group-item">
+          <%= task.title %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
