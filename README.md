@@ -21,6 +21,8 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+Tutorial guide
+
 https://www.bigbinary.com/books/learn-rubyonrails-book/
+
 https://www.bigbinary.com/books/learn-rubyonrails-book#reactjs-over-rails-view
