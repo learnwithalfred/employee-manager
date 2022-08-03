@@ -11,20 +11,19 @@ const ShowTask = () => {
   const [taskDetails, setTaskDetails] = useState([]);
   const [pageLoading, setPageLoading] = useState(true);
 
-  const fetchTaskDetails = async () => {
-    try {
-      const response = await tasksApi.show(slug);
-      setTaskDetails(response.data.task);
-    } catch (error) {
-      logger.error(error);
-    } finally {
-      setPageLoading(false);
-    }
-  };
-
   useEffect(() => {
+    const fetchTaskDetails = async () => {
+      try {
+        const response = await tasksApi.show(slug);
+        setTaskDetails(response.data.task);
+      } catch (error) {
+        logger.error(error);
+      } finally {
+        setPageLoading(false);
+      }
+    };
     fetchTaskDetails();
-  }, []);
+  }, [slug]);
 
   if (pageLoading) {
     return <PageLoader />;
