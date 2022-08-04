@@ -15,9 +15,11 @@ class TasksController < ApplicationController
   end
 
   def show
+    # render
+
     # task = Task.find_by!(slug: params[:slug])
     # respond_with_json({ task: task })
-    respond_with_json({ task: @task, assigned_user: @task.assigned_user })
+    # respond_with_json({ task: @task, assigned_user: @task.assigned_user })
   end
 
   def update
