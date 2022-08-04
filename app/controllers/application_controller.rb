@@ -2,6 +2,7 @@
 
 class ApplicationController < ActionController::Base
   before_action :authenticate_user_using_x_auth_token
+
   rescue_from ActiveRecord::RecordNotFound, with: :handle_record_not_found
   rescue_from ActiveRecord::RecordInvalid, with: :handle_validation_error
   rescue_from ActiveRecord::RecordNotUnique, with: :handle_record_not_unique
@@ -62,6 +63,13 @@ class ApplicationController < ActionController::Base
     def current_user
       @current_user
     end
+
+    def assign_tasks_to_task_owners
+      tasks_whose_owner_is_not_current_user = assigned_tasks.select { |task| task.task_owner_id != id }
+      tasks_whose_owner_is_not_current_user.each do |task|
+        task.update(assigned_user_id: task.task_owner_id)
+      end
+end
 end
 
 class ApplicationController < ActionController::Base
