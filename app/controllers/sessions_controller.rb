@@ -10,8 +10,8 @@ class SessionsController < ApplicationController
     end
   end
 
-  def def(destroy)
-    @curent_user = nill
+  def destroy
+    @current_user = nil
   end
 
   private
