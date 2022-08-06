@@ -65,7 +65,8 @@ yarn add -D webpack-dev-server@3.11.2 --exact
 
 ## Test
 
-` rails test -v test/models/user_test.rb `
+ `rails test -v test/models/user_test.rb`
+ Full test coverage `COVERAGE=true bundle exec rails test -v`
 
 ## Author
 
