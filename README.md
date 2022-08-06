@@ -1,44 +1,97 @@
-# README
+# cardio-tracker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+> Description the project.In this application we will learn to build, a REAL production Rails application
 
-Things you may want to cover:
+## Built With
 
-- Ruby version
+- Javascript
+- Ruby
+- Ruby on Rails
 
-- System dependencies
+### Prerequisites
 
-- Configuration
+- Node.js version 16.4.2
+- Ruby version 2.7.6
+- Rails version 6.1.6.1
 
-- Database creation
+I was using MacOS when building this app. To change ruby version on other operating system you can google search
 
-- Database initialization
+### Setup
 
-- How to run the test suite
+- Install ruby version 2.7.6 and use it
 
-- Services (job queues, cache servers, search engines, etc.)
+  ```
+  rvm install 2.7.6 && rvm use 2.7.6
+  ```
 
-- Deployment instructions
+- Install rails version 6
 
-Tutorial guide
+  ```
+  gem install rails -v 6.1.6.1
+  ```
 
-https://www.bigbinary.com/books/learn-rubyonrails-book/
+- Start new rails application with a specific version
 
-https://www.bigbinary.com/books/learn-rubyonrails-book#reactjs-over-rails-view
+  ```
+  rails _6.1.6.1_ new app_name -d=postgresql
+  ```
 
-rails version to use do not use any rails 3 it will cause endless errors with
-rails 6
+- Setup specific webpack version and remove unnecessary gems
 
-rvm install 2.7.6
+```
+bundle remove rack-mini-profiler
+yarn remove @rails/webpacker webpack-dev-server webpack webpack-cli
+yarn add @rails/webpacker@5.4.0
+yarn add -D webpack-dev-server@3.11.2 --exact
 
-rvm use 2.7.6
+```
 
-gem install rails -v 6.1.6.1
+- Update stylesheet pack tag in `app/views/layout/application.html.erb` from `<%= stylesheet_link_tag 'application', media: 'all' %>` to
+  ```
+  <%= stylesheet_pack_tag 'application' %>
+  ```
+- Create database
+  ```
+  rails db:create
+  ```
+- Start ruby application
 
-gem list rails
+  ```
+  rails server
+  ```
 
-rails _6.1.6.1_ new rails_react_recipe -d=postgresql -T --webpack=react
---skip-coffee
+## Install
+`bundle install`
 
-localhost:3000/rails/info/routes
+## Test
+
+` rails test -v test/models/user_test.rb `
+
+## Author
+
+Alfred Boateng
+
+- GitHub: [@learnwithalfred](https://github.com/learnwithalfred)
+- Twitter: [@kb_alfred](https://twitter.com/kb_alfred)
+- LinkedIn: [Alfred Boateng](https://www.linkedin.com/in/learnwithalfred/)
+
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](../../issues/).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+
+- Hat tip to anyone whose code was used
+- Inspiration
+- etc
+
+## 📝 License
+
+This project is [MIT](./MIT.md) licensed.
