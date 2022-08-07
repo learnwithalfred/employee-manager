@@ -106,4 +106,15 @@ class UserTest < ActiveSupport::TestCase
     assert_not_same @user.authentication_token,
       second_user.authentication_token
   end
+
+  def test_valid_comment_should_be_saved
+    assert_difference "Comment.count" do
+      @comment.save
+    end
+end
+
+  def test_comment_should_not_be_valid_without_task
+    @comment.task = nil
+    assert @comment.invalid?
+  end
 end

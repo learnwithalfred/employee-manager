@@ -76,7 +76,6 @@ Alfred Boateng
 - Twitter: [@kb_alfred](https://twitter.com/kb_alfred)
 - LinkedIn: [Alfred Boateng](https://www.linkedin.com/in/learnwithalfred/)
 
-
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
