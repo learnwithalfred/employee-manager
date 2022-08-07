@@ -7,8 +7,10 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordInvalid, with: :handle_validation_error
   rescue_from ActiveRecord::RecordNotUnique, with: :handle_record_not_unique
   rescue_from ActionController::ParameterMissing, with: :handle_api_error
+  rescue_from Pundit::NotAuthorizedError, with: :handle_authorization_error
 
   include ActionView::Helpers::TranslationHelper
+  include Pundit
   # self.abstract_class = true
 
   # def errors_to_sentence
@@ -69,13 +71,9 @@ class ApplicationController < ActionController::Base
       tasks_whose_owner_is_not_current_user.each do |task|
         task.update(assigned_user_id: task.task_owner_id)
       end
-end
-end
+    end
 
-class ApplicationController < ActionController::Base
-  before_action :authenticate_user_using_x_auth_token
-
-  # previous code
-
-  # previous code
+    def handle_authorization_error
+      respond_with_error(t("authorization.denied"), :forbidden)
+    end
 end
