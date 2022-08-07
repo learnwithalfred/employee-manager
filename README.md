@@ -63,6 +63,11 @@ yarn add -D webpack-dev-server@3.11.2 --exact
 ## Install
 `bundle install`
 
+## Start
+
+`./bin/webpack-dev-server`
+`rails server`
+
 ## Test
 
  `rails test -v test/models/user_test.rb`
