@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Task < ApplicationRecord
+  RESTRICTED_ATTRIBUTES = %i[title task_owner_id assigned_user_id]
+
   belongs_to :assigned_user, foreign_key: "assigned_user_id", class_name: "User"
   belongs_to :task_owner, foreign_key: "task_owner_id", class_name: "User"
   has_many :comments, dependent: :destroy
@@ -9,6 +11,8 @@ class Task < ApplicationRecord
   validates :title, presence: true, length: { maximum: MAX_TITLE_LENGTH }
   validates :slug, uniqueness: true
   validate :slug_not_changed
+
+  enum progress: { pending: "pending", completed: "completed" }
 
   before_create :set_slug
 
