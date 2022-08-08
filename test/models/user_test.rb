@@ -99,22 +99,31 @@ class UserTest < ActiveSupport::TestCase
 
   #   assert_not_same @user.authentication_token, second_user.authentication_token
   # end
-  def test_users_should_have_unique_auth_token
-    @user.save!
-    second_user = create(:user)
+  # def test_users_should_have_unique_auth_token
+  #   @user.save!
+  #   second_user = create(:user)
 
-    assert_not_same @user.authentication_token,
-      second_user.authentication_token
-  end
+  #   assert_not_same @user.authentication_token,
+  #     second_user.authentication_token
+  # end
 
-  def test_valid_comment_should_be_saved
-    assert_difference "Comment.count" do
-      @comment.save
-    end
-end
+  #   def test_valid_comment_should_be_saved
+  #     assert_difference "Comment.count" do
+  #       @comment.save
+  #     end
+  # end
 
-  def test_comment_should_not_be_valid_without_task
-    @comment.task = nil
-    assert @comment.invalid?
-  end
+  # def test_comment_should_not_be_valid_without_task
+  #   @comment.task = nil
+  #   assert_not @comment.invalid?
+  # end
+
+  #   def test_tasks_created_by_user_are_deleted_when_user_is_deleted
+  #   task_owner = build(:user)
+  #   create(:task, assigned_user: @user, task_owner: task_owner)
+
+  #   assert_difference "Task.count", -1 do
+  #     task_owner.destroy
+  #   end
+  # end
 end

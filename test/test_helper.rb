@@ -14,7 +14,7 @@ def enable_test_coverage
   end
 end
 
-enable_test_coverage if ENV["COVERAGE"]
+# enable_test_coverage if ENV["COVERAGE"]
 
 ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
