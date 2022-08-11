@@ -14,6 +14,7 @@ import PageLoader from "components/PageLoader";
 import CreateTask from "components/Tasks/CreateTask";
 import EditTask from "components/Tasks/EditTask";
 import ShowTask from "components/Tasks/ShowTask";
+import Users from "components/Users/ListUsers";
 import { getFromLocalStorage } from "utils/storage";
 
 const App = () => {
@@ -44,6 +45,7 @@ const App = () => {
         <Route exact path="/tasks/create" component={CreateTask} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/login" component={Login} />
+        <Route exact path="/users/list-all" component={Users} />
         <PrivateRoute
           path="/"
           redirectRoute="/login"
