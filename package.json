@@ -1,5 +1,5 @@
 {
-  "name": "granite",
+  "name": "employee-manager",
   "lint-staged": {
     "app/javascript/src/**/*.{js,jsx,json}": [
       "prettier --write",
