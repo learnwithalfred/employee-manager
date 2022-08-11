@@ -6,17 +6,6 @@ class TasksController < ApplicationController
   before_action :load_task!, only: %i[show update destroy]
   before_action :ensure_authorized_update_to_restricted_attrs, only: :update
 
-  # def index
-  #   tasks = Task.all.as_json(include: { assigned_user: { only: %i[name id] } })
-  #   respond_with_json(tasks)
-  # end
-
-  # def index
-  #   tasks = policy_scope(Task)
-  #   tasks_with_assigned_user = tasks.as_json(include: { assigned_user: { only: %i[name id] } })
-  #   respond_with_json(tasks_with_assigned_user)
-  # end
-
   def index
     tasks = policy_scope(Task)
     @pending_tasks = tasks.includes(:assigned_user).of_status(:pending)
@@ -24,7 +13,8 @@ class TasksController < ApplicationController
   end
 
   def create
-    task = current_user.created_tasks.new(task_params)
+    task = Task.new(task_params)
+    task = Task.new(task_params.merge(task_owner_id: current_user.id))
     authorize task
     task.save!
     respond_with_success(t("successfully_created", entity: "Task"))
@@ -50,7 +40,7 @@ class TasksController < ApplicationController
   private
 
     def task_params
-      params.require(:task).permit(:title, :assigned_user_id, :progress, :status)
+      params.require(:task).permit(:title, :assigned_user_id, :progress, :status, :description)
     end
 
     def load_task!
