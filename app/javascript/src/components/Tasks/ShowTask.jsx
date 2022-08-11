@@ -84,6 +84,7 @@ const ShowTask = () => {
           ></i>
         </div>
       </div>
+      <p className="mt-5 mb-3 pb-3">{task?.description}</p>
       <h2
         className="text-md mb-3 pb-3 leading-5 text-bb-gray-600
        text-opacity-50"

@@ -4,11 +4,14 @@ import Select from "react-select";
 
 import Button from "components/Button";
 import Input from "components/Input";
+import Textarea from "components/TextArea";
 
 const TaskForm = ({
   type = "create",
   title,
   setTitle,
+  description,
+  setDescription,
   assignedUser,
   users,
   setUserId,
@@ -32,6 +35,13 @@ const TaskForm = ({
         value={title}
         onChange={e => setTitle(e.target.value.slice(0, 50))}
       />
+      <Textarea
+        label="Description"
+        placeholder="Add Description to task"
+        value={description}
+        onChange={e => setDescription(e.target.value)}
+      />
+
       <div className="mt-3 flex flex-row items-center justify-start">
         <p className="text-md w-3/12 leading-5 text-gray-800">Assigned To: </p>
         <div className="w-full">

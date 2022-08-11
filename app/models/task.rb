@@ -8,8 +8,11 @@ class Task < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   MAX_TITLE_LENGTH = 125
+  MINIMUM_DESC_LENGTH = 5
   validates :title, presence: true, length: { maximum: MAX_TITLE_LENGTH }
+  validates :description, presence: true, length: { minimum: MINIMUM_DESC_LENGTH }
   validates :slug, uniqueness: true
+
   validate :slug_not_changed
 
   enum progress: { pending: "pending", completed: "completed" }

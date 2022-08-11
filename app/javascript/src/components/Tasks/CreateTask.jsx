@@ -9,6 +9,7 @@ import TaskForm from "./Form/TaskForm";
 
 const CreateTask = ({ history }) => {
   const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
   const [userId, setUserId] = useState("");
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -18,7 +19,9 @@ const CreateTask = ({ history }) => {
     event.preventDefault();
     setLoading(true);
     try {
-      await tasksApi.create({ task: { title, assigned_user_id: userId } });
+      await tasksApi.create({
+        task: { title, assigned_user_id: userId, description },
+      });
       setLoading(false);
       history.push("/");
     } catch (error) {
@@ -51,6 +54,7 @@ const CreateTask = ({ history }) => {
     <Container>
       <TaskForm
         setTitle={setTitle}
+        setDescription={setDescription}
         setUserId={setUserId}
         assignedUser={users[0]}
         loading={loading}

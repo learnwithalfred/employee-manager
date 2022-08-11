@@ -11,6 +11,7 @@ import TaskForm from "./Form/TaskForm";
 
 const EditTask = ({ history }) => {
   const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
   const [userId, setUserId] = useState("");
   const [assignedUser, setAssignedUser] = useState("");
   const [users, setUsers] = useState([]);
@@ -23,7 +24,7 @@ const EditTask = ({ history }) => {
     try {
       await tasksApi.update({
         slug,
-        payload: { task: { title, assigned_user_id: userId } },
+        payload: { task: { title, description, assigned_user_id: userId } },
       });
       setLoading(false);
       history.push("/");
@@ -50,6 +51,7 @@ const EditTask = ({ history }) => {
         const response = await tasksApi.show(slug);
         const { task } = response.data;
         setTitle(task.title);
+        setDescription(task.description);
         setAssignedUser(task.assigned_user);
         setUserId(task.assigned_user.id);
       } catch (error) {
@@ -77,9 +79,11 @@ const EditTask = ({ history }) => {
       <TaskForm
         type="update"
         title={title}
+        description={description}
         users={users}
         assignedUser={assignedUser}
         setTitle={setTitle}
+        setDescription={setDescription}
         setUserId={setUserId}
         loading={loading}
         handleSubmit={handleSubmit}
