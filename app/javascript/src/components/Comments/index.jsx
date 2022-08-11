@@ -31,17 +31,26 @@ const Comments = ({
       <Button type="submit" buttonText="Comment" loading={loading} />
     </form>
     {comments?.map((comment, index) => (
-      <div
-        key={comment.id}
-        className="border text-md rounded my-2 flex justify-between
+      <div key={comment.id} className="border my-2">
+        <div
+          className="text-md rounded my-2 flex justify-between
           border-bb-border px-8 py-3 leading-5"
-      >
-        <p className="text-bb-gray-600" key={index}>
-          {comment.content}
-        </p>
-        <p className="text-bb-gray-600 text-opacity-50">
-          {new Date(comment.created_at).toLocaleString()}
-        </p>
+        >
+          <p className="text-bb-gray-900">{comment.user.name}</p>
+          <p className="text-bb-gray-600 text-opacity-50">
+            {new Date(comment.created_at).toLocaleString()}
+          </p>
+        </div>
+
+        <div
+          key={comment.id}
+          className=" text-md rounded my-2 flex justify-between
+          border-bb-border px-8 py-3 leading-5"
+        >
+          <p className="text-bb-gray-600" key={index}>
+            {comment.content}
+          </p>
+        </div>
       </div>
     ))}
   </>
