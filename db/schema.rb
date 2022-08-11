@@ -12,7 +12,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_04_083456) do
+ActiveRecord::Schema.define(version: 2022_08_08_112104) do
+
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.integer "task_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["task_id"], name: "index_comments_on_task_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
 
   create_table "tasks", force: :cascade do |t|
     t.text "title", null: false
@@ -21,6 +31,8 @@ ActiveRecord::Schema.define(version: 2022_08_04_083456) do
     t.string "slug"
     t.integer "assigned_user_id"
     t.integer "task_owner_id"
+    t.string "progress", default: "pending", null: false
+    t.string "status", default: "unstarred", null: false
     t.index ["slug"], name: "index_tasks_on_slug", unique: true
   end
 
@@ -34,6 +46,8 @@ ActiveRecord::Schema.define(version: 2022_08_04_083456) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "comments", "tasks"
+  add_foreign_key "comments", "users"
   add_foreign_key "tasks", "users", column: "assigned_user_id"
   add_foreign_key "tasks", "users", column: "task_owner_id", on_delete: :cascade
 end

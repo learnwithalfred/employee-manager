@@ -1,44 +1,46 @@
-# README
+# Employee Management System
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+> let's build a rails react.js Employee management system using. Admin will be able to create and assign task. Employees can go for leave. Employees can only handle one task at a time. Task will have a deadline. Deadline task will not show up on when assigning to employees
 
-Things you may want to cover:
+## Built With
 
-- Ruby version
+- React.js
+- Ruby
+- Ruby on Rails
+- Tailwind CSS
 
-- System dependencies
+## Prerequisites
 
-- Configuration
+- Node.js version 16.4.2
+- Ruby version 2.7.6
+- Rails version 6.1.6.1
 
-- Database creation
+## Setup
 
-- Database initialization
+- Pull the repository and run `bundle install && yarn` to install dependencies and gems
+- Create database `rails db:create`
+- Start ruby server `rails server`
+- On a different terminal start the react application `./bin/webpack-dev-server`
 
-- How to run the test suite
+## Test
 
-- Services (job queues, cache servers, search engines, etc.)
+ Test one file `rails test -v test/models/file_name_test.rb`
+ Full test coverage `COVERAGE=true bundle exec rails test -v`
 
-- Deployment instructions
+## Author
 
-Tutorial guide
+Alfred Boateng
 
-https://www.bigbinary.com/books/learn-rubyonrails-book/
+- GitHub: [@learnwithalfred](https://github.com/learnwithalfred)
+- Twitter: [@kb_alfred](https://twitter.com/kb_alfred)
+- LinkedIn: [Alfred Boateng](https://www.linkedin.com/in/learnwithalfred/)
 
-https://www.bigbinary.com/books/learn-rubyonrails-book#reactjs-over-rails-view
+## 🤝 Contributing
 
-rails version to use do not use any rails 3 it will cause endless errors with
-rails 6
+Contributions, issues, and feature requests are welcome!
 
-rvm install 2.7.6
+Feel free to check the [issues page](../../issues/).
 
-rvm use 2.7.6
+## Show your support
 
-gem install rails -v 6.1.6.1
-
-gem list rails
-
-rails _6.1.6.1_ new rails_react_recipe -d=postgresql -T --webpack=react
---skip-coffee
-
-localhost:3000/rails/info/routes
+Give a ⭐️ if you like this project!
