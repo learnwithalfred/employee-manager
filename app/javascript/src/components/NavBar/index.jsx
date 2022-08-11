@@ -31,9 +31,9 @@ const NavBar = () => {
         <div className="flex h-16 justify-between">
           <div className="flex px-2 lg:px-0">
             <div className="hidden lg:flex">
-              <NavItem name="Todos" path="/dashboard" />
+              <NavItem name="Dashboard" path="/dashboard" />
               <NavItem
-                name="Add"
+                name="Add Task"
                 iconClass="ri-add-fill"
                 path="/tasks/create"
               />

@@ -31,7 +31,7 @@ const TaskForm = ({
     <form className="mx-auto max-w-lg" onSubmit={handleSubmit}>
       <Input
         label="Title"
-        placeholder="Todo Title (Max 50 Characters Allowed)"
+        placeholder="Task Title (Max 50 Characters Allowed)"
         value={title}
         onChange={e => setTitle(e.target.value.slice(0, 50))}
       />

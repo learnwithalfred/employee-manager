@@ -13,7 +13,6 @@ class TasksController < ApplicationController
   end
 
   def create
-    task = Task.new(task_params)
     task = Task.new(task_params.merge(task_owner_id: current_user.id))
     authorize task
     task.save!
