@@ -23,6 +23,7 @@ class User < ApplicationRecord
 
   has_secure_password
   has_secure_token :authentication_token
+  enum role: [:user, :staff, :admin]
 
   private
 
