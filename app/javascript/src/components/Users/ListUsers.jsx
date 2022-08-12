@@ -42,13 +42,6 @@ const UsersPage = () => {
   return (
     <Container>
       <UserData users={users} />
-      {/* {users.map(user => (
-        <div key={user.id}>
-          <p>{user.name}</p>
-          <p>{user.role}</p>
-          <p>{user.email}</p>
-        </div>
-      ))} */}
     </Container>
   );
 };
