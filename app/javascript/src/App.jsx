@@ -40,12 +40,34 @@ const App = () => {
     <Router>
       <ToastContainer />
       <Switch>
-        <Route exact path="/tasks/:slug/show" component={ShowTask} />
-        <Route exact path="/tasks/:slug/edit" component={EditTask} />
-        <Route exact path="/tasks/create" component={CreateTask} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/login" component={Login} />
-        <Route exact path="/users/list-all" component={Users} />
+        <PrivateRoute
+          path="/tasks/:slug/edit"
+          redirectRoute="/login"
+          condition={isLoggedIn}
+          component={EditTask}
+        />
+        <PrivateRoute
+          path="/tasks/:slug/show"
+          redirectRoute="/login"
+          condition={isLoggedIn}
+          component={ShowTask}
+        />
+
+        <PrivateRoute
+          path="/tasks/create"
+          redirectRoute="/login"
+          condition={isLoggedIn}
+          component={CreateTask}
+        />
+
+        <PrivateRoute
+          path="/users/list-all"
+          redirectRoute="/login"
+          condition={isLoggedIn}
+          component={Users}
+        />
         <PrivateRoute
           path="/"
           redirectRoute="/login"
