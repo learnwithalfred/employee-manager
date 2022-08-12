@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 
-// import { all, isNil, isEmpty, either } from "ramda";
+import { all, isNil, isEmpty, either } from "ramda";
 
 import usersApi from "apis/users";
 import Container from "components/Container";
 import PageLoader from "components/PageLoader";
+
+import UserData from "./UserData";
 
 const UsersPage = () => {
   const [users, setUsers] = useState([]);
@@ -29,15 +31,24 @@ const UsersPage = () => {
     return <PageLoader />;
   }
 
+  if (all(either(isNil, isEmpty), [fetchUserList])) {
+    return (
+      <Container>
+        <h1 className="my-5 text-center text-xl leading-5">Mo Users found</h1>
+      </Container>
+    );
+  }
+
   return (
     <Container>
-      {users.map(user => (
+      <UserData users={users} />
+      {/* {users.map(user => (
         <div key={user.id}>
           <p>{user.name}</p>
           <p>{user.role}</p>
           <p>{user.email}</p>
         </div>
-      ))}
+      ))} */}
     </Container>
   );
 };
